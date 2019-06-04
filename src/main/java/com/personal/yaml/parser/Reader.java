@@ -6,8 +6,6 @@ import org.yaml.snakeyaml.representer.Representer;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import static com.personal.yaml.constants.Resources.*;
-
 public abstract class Reader {
 
 	private static final String YAML_RESOURCES = "src/main/resources/in_map.yaml";

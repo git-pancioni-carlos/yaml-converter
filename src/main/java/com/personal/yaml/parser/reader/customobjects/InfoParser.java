@@ -1,6 +1,7 @@
-package com.personal.yaml.parser.reader;
+package com.personal.yaml.parser.reader.customobjects;
 
 import com.personal.yaml.dto.Info;
+import com.personal.yaml.parser.reader.ObjectsParser;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 

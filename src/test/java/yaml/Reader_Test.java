@@ -1,7 +1,7 @@
 package yaml;
 
 import com.personal.yaml.parser.Reader;
-import com.personal.yaml.parser.reader.InfoParser;
+import com.personal.yaml.parser.reader.customobjects.InfoParser;
 import com.personal.yaml.parser.reader.MapParser;
 import org.junit.Before;
 import org.junit.Test;

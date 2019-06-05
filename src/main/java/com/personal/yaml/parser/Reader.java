@@ -17,7 +17,7 @@ public abstract class Reader {
 
 	protected abstract Object load() throws FileNotFoundException;
 
-	public abstract void read() throws FileNotFoundException;
+	public abstract Object read() throws FileNotFoundException;
 
 	public abstract void findByKey(String findByKey) throws FileNotFoundException;
 

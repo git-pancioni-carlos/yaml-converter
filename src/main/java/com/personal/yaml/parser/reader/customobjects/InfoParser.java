@@ -1,6 +1,7 @@
-package com.personal.yaml.parser.reader;
+package com.personal.yaml.parser.reader.customobjects;
 
 import com.personal.yaml.dto.Info;
+import com.personal.yaml.parser.reader.ObjectsParser;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -23,8 +24,9 @@ public class InfoParser extends ObjectsParser {
 	}
 
 	@Override
-	public void read() throws FileNotFoundException {
+	public Info read() throws FileNotFoundException {
 		System.out.println("Object: " + load().toString());
+		return load();
 	}
 
 	@Override

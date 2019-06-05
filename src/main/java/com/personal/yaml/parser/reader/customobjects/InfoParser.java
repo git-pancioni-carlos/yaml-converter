@@ -24,8 +24,9 @@ public class InfoParser extends ObjectsParser {
 	}
 
 	@Override
-	public void read() throws FileNotFoundException {
+	public Info read() throws FileNotFoundException {
 		System.out.println("Object: " + load().toString());
+		return load();
 	}
 
 	@Override

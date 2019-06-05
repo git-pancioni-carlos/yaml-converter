@@ -35,7 +35,7 @@ public class MapParser extends Reader {
 	}
 
 	@Override
-	public void read() throws FileNotFoundException {
-		return;
+	public Map<String, Object> read() throws FileNotFoundException {
+		return load();
 	}
 }

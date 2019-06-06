@@ -1,5 +1,6 @@
 package com.personal.yaml.parser;
 
+import com.personal.exception.YamlTagKeyNotFoundException;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.representer.Representer;
 
@@ -15,13 +16,14 @@ public abstract class Reader {
 
 	}
 
-	protected abstract Object load() throws FileNotFoundException;
+	protected abstract Object load(final String path) throws FileNotFoundException;
 
-	public abstract Object read() throws FileNotFoundException;
+	public abstract Object read(final String path) throws FileNotFoundException;
 
-	public abstract void findByKey(String findByKey) throws FileNotFoundException;
+	public abstract Object findByKey(String findByKey, final String path)
+			throws FileNotFoundException, YamlTagKeyNotFoundException;
 
-	public abstract InputStream getFile() throws FileNotFoundException;
+	public abstract InputStream getFile(final String path) throws FileNotFoundException;
 
 	/**
 	 * Loads a representation of a java bean for snake yaml

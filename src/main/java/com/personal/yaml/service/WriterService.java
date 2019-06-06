@@ -13,7 +13,7 @@ public class WriterService {
 		writer = new Writer();
 	}
 
-	public void write(final Map<String, Object> in) throws IOException {
-		writer.write(in);
+	public void write(final Map<String, Object> in, final String path) throws IOException {
+		writer.write(in, path);
 	}
 }

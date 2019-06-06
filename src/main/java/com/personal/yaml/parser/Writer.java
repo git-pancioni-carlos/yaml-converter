@@ -7,8 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
-import static com.personal.yaml.constants.Resources.OUT_EMPTY_FILE;
-
 public class Writer {
 
 	private Yaml yaml;
@@ -17,8 +15,8 @@ public class Writer {
 		yaml = new Yaml(dumperOptions());
 	}
 
-	public void write(final Map<String, Object> data) throws IOException {
-		yaml.dump(data, new FileWriter(OUT_EMPTY_FILE));
+	public void write(final Map<String, Object> data, final String path) throws IOException {
+		yaml.dump(data, new FileWriter(path));
 	}
 
 	private DumperOptions dumperOptions(){

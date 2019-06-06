@@ -22,6 +22,7 @@ public class Writer_Test {
 
 	@Test
 	public void write() throws IOException {
-		writer.write((Map<String, Object>) mapParser.read());
+		writer.write((Map<String, Object>) mapParser.read("src/main/resources/in_map.yaml"),
+				"src/main/resources/out_empty_file.yaml");
 	}
 }

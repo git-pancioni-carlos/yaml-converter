@@ -10,8 +10,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import static com.personal.yaml.constants.Resources.IN_OBJECT_INFO_YAML;
-
 public class InfoParser extends ObjectsParser {
 
 	public InfoParser(){
@@ -19,23 +17,24 @@ public class InfoParser extends ObjectsParser {
 	}
 
 	@Override
-	protected Info load() throws FileNotFoundException {
-		return yaml.loadAs(getFile(), Info.class);
+	protected Info load(final String path) throws FileNotFoundException {
+		return yaml.loadAs(getFile(path), Info.class);
 	}
 
 	@Override
-	public Info read() throws FileNotFoundException {
-		System.out.println("Object: " + load().toString());
-		return load();
+	public Info read(final String path) throws FileNotFoundException {
+		System.out.println("Object: " + load(path).toString());
+		return load(path);
 	}
 
 	@Override
-	public void findByKey(String findByKey) {
-		return;
+	public Object findByKey(String findByKey, final String path) {
+		System.out.println("Nothing to see here, pal :)");
+		return null;
 	}
 
 	@Override
-	public InputStream getFile() throws FileNotFoundException {
-		return new FileInputStream(new File(IN_OBJECT_INFO_YAML));
+	public InputStream getFile(final String path) throws FileNotFoundException {
+		return new FileInputStream(new File(path));
 	}
 }

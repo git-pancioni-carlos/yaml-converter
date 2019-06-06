@@ -1,5 +1,6 @@
 package com.personal.yaml.parser.reader;
 
+import com.personal.exception.YamlTagKeyNotFoundException;
 import com.personal.yaml.parser.Reader;
 import org.yaml.snakeyaml.Yaml;
 
@@ -8,8 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Map;
-
-import static com.personal.yaml.constants.Resources.IN_MAP_YAML;
+import java.util.Objects;
 
 public class MapParser extends Reader {
 
@@ -18,24 +18,28 @@ public class MapParser extends Reader {
 	}
 
 	@Override
-	public void findByKey(final String key) throws FileNotFoundException {
-		final Boolean valid = (Boolean) load().get(key);
-		System.out.println(valid);
+	public Object findByKey(final String key, final String path)
+			throws FileNotFoundException, YamlTagKeyNotFoundException {
+		final Object value = load(path).get(key);
 
+		if(Objects.isNull(value)){
+			throw new YamlTagKeyNotFoundException("Value for key [" + key + "] not found.");
+		}
+		return value;
 	}
 
 	@Override
-	public InputStream getFile() throws FileNotFoundException {
-		return new FileInputStream(new File(IN_MAP_YAML));
+	public InputStream getFile(final String path) throws FileNotFoundException {
+		return new FileInputStream(new File(path));
 	}
 
 	@Override
-	protected Map<String, Object> load() throws FileNotFoundException {
-		return yaml.load(getFile());
+	protected Map<String, Object> load(final String path) throws FileNotFoundException {
+		return yaml.load(getFile(path));
 	}
 
 	@Override
-	public Map<String, Object> read() throws FileNotFoundException {
-		return load();
+	public Map<String, Object> read(final String path) throws FileNotFoundException {
+		return load(path);
 	}
 }

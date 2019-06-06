@@ -1,5 +1,6 @@
 package yaml;
 
+import com.personal.exception.YamlTagKeyNotFoundException;
 import com.personal.yaml.dto.Info;
 import com.personal.yaml.parser.Reader;
 import com.personal.yaml.parser.reader.MapParser;
@@ -29,7 +30,7 @@ public class Reader_Test {
 
 	@Test
 	public void read() throws FileNotFoundException {
-		final Info info = (Info) infoParser.read();
+		final Info info = (Info) infoParser.read("src/main/resources/in_map.yaml");
 
 		assertNotNull("Test #Info object cannot be null", info);
 		assertNotNull("Test #Info.Data object cannot be null", info.getData());
@@ -38,7 +39,7 @@ public class Reader_Test {
 	}
 
 	@Test
-	public void findByKey() throws FileNotFoundException {
-		mapParser.findByKey(findByKey);
+	public void findByKey() throws FileNotFoundException, YamlTagKeyNotFoundException {
+		mapParser.findByKey(findByKey, "src/main/resources/in_map.yaml");
 	}
 }

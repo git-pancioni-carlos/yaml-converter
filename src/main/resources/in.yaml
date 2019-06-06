@@ -1,0 +1,8 @@
+  date: 2001-11-23 15:03:17 -5
+  data:
+    {name: Name-example,
+    surname: Surname-example}
+  valid: true
+  non_existing_property: new value
+  existing_property_diff_value: in
+  existing_property_same_value: can't change

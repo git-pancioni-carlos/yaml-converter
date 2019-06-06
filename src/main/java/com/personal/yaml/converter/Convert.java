@@ -25,7 +25,7 @@ public class Convert {
 	}
 
 	public void byValue(final String in, final String out, final List<String> keys)
-			throws FileNotFoundException, YamlTagKeyNotFoundException {
+			throws IOException, YamlTagKeyNotFoundException {
 		final Map<String, Object> outMap = readerService.read(out);
 
 		for (String key : keys) {
@@ -34,16 +34,13 @@ public class Convert {
 
 			if (Objects.isNull(outTag)) {
 				outMap.put(key, value);
-				return;
-			}
-
-			if (outTag.equals(value)) {
+			}else if (outTag.equals(value)) {
 				System.out.println("Same value for key [" + key + "] found. Skipping request.");
-				return;
+			}else{
+				outMap.remove(key, value);
+				outMap.put(key, value);
 			}
-
-			outMap.remove(key, value);
-			outMap.put(key, value);
 		}
+		writerService.write(outMap, out);
 	}
 }

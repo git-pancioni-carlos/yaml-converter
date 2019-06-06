@@ -5,6 +5,7 @@ import com.personal.exception.YamlValidatorException;
 import com.personal.yaml.converter.Convert;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +55,9 @@ public class CopyProperties {
 			e.printStackTrace();
 		} catch (YamlTagKeyNotFoundException e) {
 			System.err.println("Tag on yaml to be copied not found and returned an exception: " + e.getMessage());
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.err.println("Conversion/copying of properties returned an exception: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
